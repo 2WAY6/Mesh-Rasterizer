@@ -1,7 +1,7 @@
 #include <iostream>
 #include "gdal_priv.h"
 
-int main () {
+int export_to_geotiff () {
     GDALAllRegister();
 
     const char *pszFormat = "GTiff";

@@ -2,10 +2,13 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <limits>
+#include <math.h>
 #include "utils.h"
 
 
-
+#ifndef NODE
+#define NODE
 struct Node {
     int id;
     double x;
@@ -14,25 +17,39 @@ struct Node {
 
     Node(int id, double x, double y, double z) : id(id), x(x), y(y), z(z) {};
 };    
+#endif
 
-class Element {
-private:
+#ifndef ELEMENT
+#define ELEMENT
+struct Element {
     int id;
     std::vector<int> nodeIds;
 
-public:
     Element(int id, std::vector<int> nodeIds) : id(id), nodeIds(nodeIds) {};
+
+    std::vector<Node> getNodes(std::vector<Node>& nodes) {
+        std::vector<Node> elmt_nodes;
+        for (Node& node : nodes)
+            elmt_nodes.push_back(node);
+        return elmt_nodes;
+    }
 };
+#endif
 
-
-class Mesh {
-private:
+#ifndef MESH
+#define MESH
+struct Mesh {
     std::vector<Node> nodes;
     std::vector<Element> elements;
     int maxNodeId = 0;
     int maxElementId = 0;
+    double xMin = std::numeric_limits<double>::infinity();
+    double xMax = 0.0;
+    double yMin = std::numeric_limits<double>::infinity();
+    double yMax = 0.0;
+    double zMin = std::numeric_limits<double>::infinity();
+    double zMax = 0.0;
 
-public:
     Mesh() {
         std::cout << "Creating Mesh..." << std::endl;
         nodes = std::vector<Node>();
@@ -62,6 +79,19 @@ public:
                 double z = std::stod(parts[4]);
                 Node node = Node(maxNodeId++, x, y, z);
                 nodes.push_back(node);
+
+                if (node.x < xMin)
+                    xMin = node.x;
+                else if (node.x > xMax)
+                    xMax = node.x;
+                if (node.y < yMin)
+                    yMin = node.y;
+                else if (node.y > yMax)
+                    yMax = node.y;
+                if (node.z < zMin)
+                    zMin = node.z;
+                else if (node.z > zMax)
+                    zMax = node.z;
             }
             else if (line.rfind("E3T", 0) == 0) {
                 std::vector<std::string> parts = splitStringAtWhitespace(line);
@@ -117,4 +147,4 @@ public:
         }
     }
 };
-
+#endif

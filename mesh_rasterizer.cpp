@@ -6,7 +6,7 @@
 int main () {
      const int cellSize = 1;
 
-     std::string path_mesh = "/home/titan/Programming/CPP/Mesh-Rasterizer/data/small/hydro_as-2d.2dm";
+     std::string path_mesh = "/home/titan/Programming/CPP/Mesh-Rasterizer/data/medium/hydro_as-2d.2dm";
      Mesh mesh = Mesh();
      mesh.import_2dm_mesh(path_mesh);
 
@@ -14,4 +14,5 @@ int main () {
      raster.fromMesh(mesh, cellSize);
 
      // export_to_geotiff(); 
+     std::cout << "Program finished." << std::endl;
 }

@@ -3,6 +3,15 @@
 #include "include/raster.h"
 #include "include/gdal_io.h"
 
+// TODO:
+// - Split Classes into separate files (header and cpp)
+// - Make file paths Paths (c++14 or 17?)
+// - Add an export path
+// - Add argument parsing
+// - Add tests (do the input files exist? Are nodes inside? Is it renumbered?)
+// - Use templates for vector<vector<T>> stuff
+// - Create autoconf and makefile
+
 int main () {
      const int cellSize = 1;
 

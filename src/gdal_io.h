@@ -6,7 +6,7 @@
 #include "raster.h"
 
 void export_to_geotiff (Raster& raster) {
-    std::cout << "\nExportiere Raster als GeoTIFF..." << std::endl;
+    std::cout << "\nExporting raster as GeoTIFF..." << std::endl;
 
     GDALAllRegister();
 
@@ -63,6 +63,6 @@ void export_to_geotiff (Raster& raster) {
 
     GDALClose( (GDALDatasetH) poDstDS );
 
-    std::cout << "Finished writing raster." << std::endl;
+    std::cout << "- Finished writing raster." << std::endl;
 }
 

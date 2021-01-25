@@ -1,10 +1,9 @@
 #include <iostream>
-#include "include/mesh.h"
-#include "include/raster.h"
-#include "include/gdal_io.h"
+#include "mesh.h"
+#include "raster.h"
+#include "gdal_io.h"
 
 // TODO:
-// - Split Classes into separate files (header and cpp)
 // - Make file paths Paths (c++14 or 17?)
 // - Add an export path
 // - Add argument parsing

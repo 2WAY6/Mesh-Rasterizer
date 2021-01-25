@@ -2,8 +2,8 @@
 #include <string>
 #include <sstream>
 
-#ifndef UTILS_H
-#define UTILS_H
+// #ifndef UTILS_H
+// #define UTILS_H
 std::vector<std::string> splitStringAtWhitespace(std::string text) {
     std::vector<std::string> parts;
     std::istringstream iss(text);
@@ -11,4 +11,4 @@ std::vector<std::string> splitStringAtWhitespace(std::string text) {
         parts.push_back(s);
     return parts;
 }
-#endif
+// #endif

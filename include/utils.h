@@ -2,8 +2,8 @@
 #include <string>
 #include <sstream>
 
-#ifndef SPLIT
-#define SPLIT
+#ifndef UTILS_H
+#define UTILS_H
 std::vector<std::string> splitStringAtWhitespace(std::string text) {
     std::vector<std::string> parts;
     std::istringstream iss(text);

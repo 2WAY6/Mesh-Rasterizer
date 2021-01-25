@@ -47,3 +47,4 @@ data/
 
 # Ignore output data
 *.tif
+*.xyz

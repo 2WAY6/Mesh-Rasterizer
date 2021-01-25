@@ -15,5 +15,5 @@ int main () {
 
      export_to_geotiff(raster); 
 
-     std::cout << "Program finished." << std::endl;
+     std::cout << "\nProgram finished." << std::endl;
 }

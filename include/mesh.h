@@ -11,11 +11,11 @@
 #define NODE
 struct Node {
     int id;
-    double x;
-    double y;
-    double z;
+    float x;
+    float y;
+    float z;
 
-    Node(int id, double x, double y, double z) : id(id), x(x), y(y), z(z) {};
+    Node(int id, float x, float y, float z) : id(id), x(x), y(y), z(z) {};
 };    
 #endif
 
@@ -43,15 +43,14 @@ struct Mesh {
     std::vector<Element> elements;
     int maxNodeId = 0;
     int maxElementId = 0;
-    double xMin = std::numeric_limits<double>::infinity();
-    double xMax = 0.0;
-    double yMin = std::numeric_limits<double>::infinity();
-    double yMax = 0.0;
-    double zMin = std::numeric_limits<double>::infinity();
-    double zMax = 0.0;
+    float xMin = std::numeric_limits<float>::infinity();
+    float xMax = 0.0;
+    float yMin = std::numeric_limits<float>::infinity();
+    float yMax = 0.0;
+    float zMin = std::numeric_limits<float>::infinity();
+    float zMax = 0.0;
 
     Mesh() {
-        std::cout << "Creating Mesh..." << std::endl;
         nodes = std::vector<Node>();
         elements = std::vector<Element>();
     }
@@ -74,9 +73,9 @@ struct Mesh {
         while (std::getline(infile, line)) {
             if (line.rfind("ND", 0) == 0) {
                 std::vector<std::string> parts = splitStringAtWhitespace(line);
-                double x = std::stod(parts[2]);
-                double y = std::stod(parts[3]);
-                double z = std::stod(parts[4]);
+                float x = std::stod(parts[2]);
+                float y = std::stod(parts[3]);
+                float z = std::stod(parts[4]);
                 Node node = Node(maxNodeId++, x, y, z);
                 nodes.push_back(node);
 
@@ -119,9 +118,9 @@ struct Mesh {
             std::cout << "- Splitting quads into three triangles..." << std::endl;
 
             for (std::vector<int> quad : quad_elements) {
-                double x = 0.0;
-                double y = 0.0;
-                double z = 0.0;
+                float x = 0.0;
+                float y = 0.0;
+                float z = 0.0;
                 for (int nid : quad) {
                     Node& pNode = nodes[nid];
                     x += pNode.x;
